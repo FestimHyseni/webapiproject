@@ -174,10 +174,14 @@ const Menu = () => {
 
   const deleteItem = async (id) => {
     try {
+      // Dërgo një kërkesë për të fshirë artikullin në backend
       await axios.delete(`http://localhost:5000/items/${id}`, { withCredentials: true });
+  
+      // Përshtatni listën e artikujve pas fshirjes
       setItems(items.filter((item) => item.id !== id));
     } catch (error) {
-      console.error('Error deleting item:', error.response || error.message);
+      console.error('Error deleting item:', error.response?.data?.error || error.message);
+      alert(`Gabim: ${error.response?.data?.error || error.message}`);
     }
   };
 
