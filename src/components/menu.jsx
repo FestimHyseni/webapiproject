@@ -37,7 +37,7 @@ const Menu = () => {
 
   const fetchCount = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/numri_pjesmarresve', { withCredentials: true });
+      const response = await axios.get('http://localhost:5000/numri_pjesmarresve', { withCredentials: true });
       setNumriPjesmarresve(response.data);
     } catch (error) {
       console.error('Error fetching items:', error.response || error.message);
@@ -276,7 +276,7 @@ const Menu = () => {
               </Link>
               <p className="text-sm text-gray-400">{item.description}</p>
 
-              <p>Numri i Pjesmarresve: {numriPjesmarresve !== null ? numriPjesmarresve : 'Po merret...'} </p>
+              <p>Numri i Pjesmarresve: {numriPjesmarresve} </p>
               </div>
           )}
 

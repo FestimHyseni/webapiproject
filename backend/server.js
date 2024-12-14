@@ -183,7 +183,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.get('/api/numri_pjesmarresve', (req, res) => {
+app.get('/numri_pjesmarresve', (req, res) => {
   const query = 'SELECT COUNT(*) AS numri FROM Pjesmarresi'; // Ndrysho emrin e tabelës dhe fushës sipas nevojës
   db.query(query, (err, result) => {
     if (err) throw err;

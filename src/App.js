@@ -10,6 +10,7 @@ import { AddSponsor, EditSponsor, SponsorList } from './components/sponsor'; // 
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
+import WorkshopsUS from './components/WorkshopsUs';
 import Menu from "./components/menu";  // Import Menu Page
 import {AddPost , EditPost , PostList} from './components/posts';
 import "./App.css"
@@ -26,6 +27,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/workshops-us" element={<WorkshopsUS />} />
+
+      
+        
+
+
 
           <Route path="ItemList" element={<ItemList />} />
           <Route path="/add" element={<AddItem />} />
