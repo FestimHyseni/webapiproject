@@ -1,4 +1,66 @@
 const Item = require('../models/item');
+const Pjesmarresi = require('../models/Pjesmarresi');
+
+const sequelize = require('../db'); // Adjust the path if necessary
+
+
+
+
+
+
+const getItemsWithParticipantsCount = async (req, res) => {
+  try {
+    const { id } = req.query; 
+
+    if (id) {
+      const item = await Item.findByPk(id, {
+        include: [
+          {
+            model: Pjesmarresi,
+            attributes: [], 
+          },
+        ],
+        attributes: [
+          'id',
+          'name',
+          [
+            sequelize.fn('COUNT', sequelize.col('Pjesmarresis.id')), 
+            'participantsCount',
+          ],
+        ],
+        group: ['Item.id'],
+      });
+
+      if (!item) {
+        return res.status(404).json({ error: 'Item jo i gjetur' });
+      }
+
+      res.json(item);
+    } else {
+      const items = await Item.findAll({
+        include: [
+          {
+            model: Pjesmarresi,
+            attributes: [],
+          },
+        ],
+        attributes: [
+          'id',
+          'name',
+          [
+            sequelize.fn('COUNT', sequelize.col('Pjesmarresis.id')),
+            'participantsCount',
+          ],
+        ],
+        group: ['Item.id'],
+      });
+
+      res.json(items);
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 // Krijimi i Item-it
 const createItem = async (req, res) => {
@@ -47,32 +109,22 @@ const updateItem = async (req, res) => {
 const deleteItem = async (req, res) => {
   try {
     const { id } = req.params;
-    const item = await Item.findByPk(id); // Merrni artikullin nga ID
-
-    // Kontrollo nëse artikulli ekziston
-    if (!item) {
-      return res.status(404).json({ error: 'Item jo i gjetur' });
+    const item = await Item.findByPk(id);
+    if (item) {
+      await item.destroy();
+      res.json({ message: 'Item u fshi' });
+    } else {
+      res.status(404).json({ error: 'Item jo i gjetur' });
     }
-
-    // Kontrollo nëse përdoruesi i kërkoi këtë artikull
-    if (req.user.id !== item.userId) {
-      return res.status(403).json({ error: 'Nuk keni të drejtë të fshini këtë artikull.' });
-    }
-
-    // Fshini artikullin nga baza e të dhënave
-    await item.destroy();
-
-    return res.json({ message: 'Item u fshi' });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
-
 
 module.exports = {
   createItem,
   getItems,
   updateItem,
   deleteItem,
+  getItemsWithParticipantsCount,
 };

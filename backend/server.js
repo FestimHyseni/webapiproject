@@ -16,10 +16,14 @@ const Item = require('./models/item');
 const User = require('./models/user');
 const Post = require('./models/post');
 const postRoutes = require('./routes/postRoutes');
-const { createItem, getItems, updateItem, deleteItem } = require('./controller/itemController');
-const { createSponsor, getSponsors, updateSponsor, deleteSponsor } = require('./controller/sponsorController');
+const { createItem, getItems, updateItem, deleteItem, getItemsWithParticipantsCount} = require('./controller/itemController');
+const { createSponsor, getSponsors, updateSponsor, deleteSponsor, getPjes } = require('./controller/sponsorController');
 const { createPost, getPosts , updatePost, deletePost } = require('./controller/postController');
-const app = express();
+
+
+const app = express()
+const db = require('./db');
+
 
 
 const Pjesmarresi = require('./models/Pjesmarresi');
@@ -62,8 +66,8 @@ app.use(bodyParser.json());
 
 // Logging middleware to debug session and user
 app.use((req, res, next) => {
-  console.log('Session:', req.session);
-  console.log('User:', req.user);
+  // console.log('Session:', req.session);
+  // console.log('User:', req.user);
   next();
 });
 
@@ -164,9 +168,15 @@ app.post('/add-participant/:itemId', isAuthenticated, async (req, res) => {
   }
 });
 
+
+
 // Route to get the logged-in user's information
 app.get('/user', isAuthenticated, (req, res) => {
   res.json({ user: req.user });
+});
+
+app.get('/', (req, res) => {
+  res.json('user');
 });
 
 // Registration route
@@ -183,14 +193,25 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.get('/numri_pjesmarresve', (req, res) => {
-  const query = 'SELECT COUNT(*) AS numri FROM Pjesmarresi'; // Ndrysho emrin e tabelës dhe fushës sipas nevojës
-  db.query(query, (err, result) => {
-    if (err) throw err;
-    res.json({ numri: result[0].numri });
-  });
-});
+// app.get('/getUsers', (req, res) => {
+//   console.log('Request received for /getUsers');
+//   console.log(req.body);
 
+//   const sql = "SELECT COUNT(*) AS count FROM pjesmarresis";
+
+//   sequelize.query(sql, (err, data) => {
+//     if (err) {
+//       console.error('Database error:', err);
+//       return res.status(500).json("Error").end();
+//     }
+//     if (data.length > 0) {
+//       console.log('Data received:', data);
+//       return res.status(200).json(data[0]).end();
+//     } else {
+//       return res.status(204).json("fail").end();
+//     }
+//   });
+// });
 // Logout route
 app.post('/logout', (req, res) => {
   res.clearCookie('ubtsecured', {
@@ -206,6 +227,22 @@ app.post('/logout', (req, res) => {
   });
 });
 
+// app.get('/items-with-participants', async (req, res) => {
+//   try {
+//     const items = await db.query(`
+//       SELECT items.id, items.name, items.description, COUNT(participants.id) AS numClients
+//       FROM items
+//       LEFT JOIN participants ON items.id = participants.item_id
+//       GROUP BY items.id
+//     `);
+//     res.json(items);
+//   } catch (error) {
+//     res.status(500).json({ message: 'Error fetching data' });
+//   }
+// });
+app.get('/with-participants', getItemsWithParticipantsCount);
+
+
 // CRUD routes for items
 app.post('/items', isAuthenticated, createItem);
 app.get('/items', isAuthenticated, getItems);
@@ -217,6 +254,8 @@ app.post('/sponsors', isAuthenticated, createSponsor);
 app.get('/sponsors', isAuthenticated, getSponsors);
 app.put('/sponsors/:id', isAuthenticated, updateSponsor);
 app.delete('/sponsors/:id', isAuthenticated, deleteSponsor);
+// app.get('/items-with-participants', getPjes);
+
 
 app.use('/posts', postRoutes); 
 
