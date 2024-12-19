@@ -11,6 +11,7 @@ import Home from './components/Home';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import WorkshopsUS from './components/WorkshopsUs';
+import EventHighlightsUs from './components/EventHighlightsUs';
 import Menu from "./components/menu";  // Import Menu Page
 import {AddPost , EditPost , PostList} from './components/posts';
 import "./App.css"
@@ -28,6 +29,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/workshops-us" element={<WorkshopsUS />} />
+        <Route path="/event-highlights-us" element={<EventHighlightsUs />} />
 
       
         
