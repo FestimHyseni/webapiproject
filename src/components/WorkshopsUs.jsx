@@ -38,70 +38,118 @@ const WorkshopsUS = () => {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative text-center text-white py-32 bg-cover bg-center" style={{ backgroundImage: "url('workshop-bg.jpg')" }}>
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="relative z-10">
-          <h1 className="text-5xl font-bold mb-4 leading-tight">
-            Bëhuni Pjesë e Workshopeve tona
-          </h1>
-          <p className="text-xl mb-8">
-            Eksploroni mundësitë për të mësuar dhe zhvilluar aftësitë tuaja përmes workshopeve tona interaktive.
-          </p>
-          <Link
-            to="#"
-            className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-xl text-lg font-semibold transition duration-300"
-          >
-            Shiko Workshope
-          </Link>
-        </div>
-      </section>
+        {/* Main Content */}
+        <main className="py-10 px-8">
+        <h1 className="text-4xl font-bold text-center text-blue-600 mb-6">
+          Punëtoritë & Mundësitë e Mësimit
+        </h1>
+        <p className="text-lg text-center mb-10">
+          Zbuloni një gamë të larmishme të punëtorive tona që janë krijuar për të zgjeruar aftësitë tuaja dhe për të nxitur bashkëpunimin.
+        </p>
 
-      {/* Workshops Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-12">Workshope të Ardhshme</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-            <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition">
+        {/* Workshop Sections */}
+        <section className="mb-16">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-white p-6 shadow-lg rounded-lg">
               <img
-                src="workshop1.jpg"
+                src="gallery/photo_1.jpg"
                 alt="Workshop 1"
-                className="rounded-xl mb-6 transition-transform transform hover:scale-105"
+                className="w-full h-40 object-cover mb-4 rounded"
               />
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">Workshop 1</h3>
-              <p className="text-gray-600">
-                Ky workshop do të fokusohet në zhvillimin e aftësive të komunikimit dhe lidershipit.
+              <h2 className="text-xl font-semibold text-blue-600 mb-2">Bazat e Mendimit Kreativ</h2>
+              <p className="text-gray-700 mb-4">
+                Njihuni me konceptet bazë të mendimit kreativ në këtë sesion ndërveprues. Ky është një hap i parë i rëndësishëm për të eksploruar metoda inovative.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition">
+            <div className="bg-white p-6 shadow-lg rounded-lg">
               <img
-                src="workshop2.jpg"
+                src="gallery/photo_2.jpg"
                 alt="Workshop 2"
-                className="rounded-xl mb-6 transition-transform transform hover:scale-105"
+                className="w-full h-40 object-cover mb-4 rounded"
               />
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">Workshop 2</h3>
-              <p className="text-gray-600">
-                Workshop për teknikat më të reja të menaxhimit të kohës dhe produktivitetit.
+              <h2 className="text-xl font-semibold text-blue-600 mb-2">Kodimi i Avancuar</h2>
+              <p className="text-gray-700 mb-4">
+                Zbuloni teknikat e avancuara të kodimit me ushtrime praktike dhe shembuj të jetës reale. Perfeksiononi aftësitë tuaja me ekspertë të industrisë.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition">
+            <div className="bg-white p-6 shadow-lg rounded-lg">
               <img
-                src="workshop3.jpg"
+                src="gallery/photo_13.jpg"
                 alt="Workshop 3"
-                className="rounded-xl mb-6 transition-transform transform hover:scale-105"
+                className="w-full h-40 object-cover mb-4 rounded"
               />
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">Workshop 3</h3>
-              <p className="text-gray-600">
-                Mësoni si të krijoni prezantime të fuqishme dhe ndikim të drejtpërdrejtë.
+              <h2 className="text-xl font-semibold text-blue-600 mb-2">Të Folurit në Publik</h2>
+              <p className="text-gray-700 mb-4">
+                Përmirësoni aftësitë tuaja të prezantimit dhe të folurit në publik me udhëzime profesionale dhe praktika të personalizuara.
+              </p>
+            </div>
+            <div className="bg-white p-6 shadow-lg rounded-lg">
+              <img
+                src="gallery/photo_3.jpg"
+                alt="Workshop 4"
+                className="w-full h-40 object-cover mb-4 rounded"
+              />
+              <h2 className="text-xl font-semibold text-blue-600 mb-2">Menaxhimi i Projekteve</h2>
+              <p className="text-gray-700 mb-4">
+                Mësoni teknikat më të mira për planifikimin, organizimin dhe ekzekutimin e projekteve komplekse me burime të kufizuara.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 shadow-lg rounded-lg">
+              <img
+                src="gallery/photo_4.jpg"
+                alt="Workshop 5"
+                className="w-full h-40 object-cover mb-4 rounded"
+              />
+              <h2 className="text-xl font-semibold text-blue-600 mb-2">Shkathtësitë e Ekipit</h2>
+              <p className="text-gray-700 mb-4">
+                Zhvilloni strategji për të ndërtuar dhe drejtuar ekipe të suksesshme duke përdorur teknika moderne të motivimit dhe komunikimit.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 shadow-lg rounded-lg">
+              <img
+                src="gallery/photo_5.jpg"
+                alt="Workshop 6"
+                className="w-full h-40 object-cover mb-4 rounded"
+              />
+              <h2 className="text-xl font-semibold text-blue-600 mb-2">Analiza e Të Dhënave</h2>
+              <p className="text-gray-700 mb-4">
+                Mësoni se si të analizoni dhe interpretoni të dhënat për të marrë vendime strategjike duke përdorur mjete dhe teknika moderne.
               </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="bg-gray-200 py-10 px-8 rounded-lg">
+          <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">Çfarë Thonë Pjesëmarrësit</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <p className="text-gray-700 italic mb-4">
+                "Një përvojë fantastike! Ekipi ishte shumë profesional dhe përmbajtja shumë e dobishme."
+              </p>
+              <div className="text-right text-blue-600 font-semibold">- Anisa H.</div>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <p className="text-gray-700 italic mb-4">
+                "Punëtoritë më ndihmuan të zhvilloj aftësitë e mia në mënyrë praktike dhe efektive."
+              </p>
+              <div className="text-right text-blue-600 font-semibold">- Blerim K.</div>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <p className="text-gray-700 italic mb-4">
+                "Një mundësi e shkëlqyer për rrjetëzim dhe zhvillim profesional."
+              </p>
+              <div className="text-right text-blue-600 font-semibold">- Dorina S.</div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center py-6">
-        &copy; 2024 Menaxhimi i Konferencave. Të gjitha të drejtat të rezervuara.
+      <footer className="bg-gray-800 text-white py-6 mt-10">
+        <div className="text-center">&copy; 2025 Menaxhimi i Konferencave. Të gjitha të drejtat janë të rezervuara.</div>
       </footer>
     </div>
   );
