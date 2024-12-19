@@ -35,21 +35,6 @@ const AboutUs = () => {
 </header>
 
 
-      {/* Hero Section */}
-      <section className="bg-blue-600 text-white py-20 px-8">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-4">Rreth Nesh</h1>
-          <p className="text-lg">
-            Zbuloni historinë pas platformës sonë dhe si po revolucionarizojmë menaxhimin e konferencave.
-          </p>
-          <img
-            src=""
-            alt="Hero Image"
-            className="w-full rounded-lg shadow-lg mt-8"
-          />
-        </div>
-      </section>
-
       {/* Misioni Ynë */}
       <section className="py-16 px-8">
         <div className="container mx-auto grid md:grid-cols-2 items-center gap-8">
