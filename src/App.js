@@ -9,7 +9,7 @@ import { AddItem, EditItem, ItemList } from './components/CrudTest'; // Import C
 import { AddSponsor, EditSponsor, SponsorList } from './components/sponsor'; // Import Sponsor components
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
-import ContactUs from './components/ContactUs';
+import Kontakt from './components/Kontakt';
 import WorkshopsUS from './components/WorkshopsUs';
 import EventHighlightsUs from './components/EventHighlightsUs';
 import Menu from "./components/menu";  // Import Menu Page
@@ -27,7 +27,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/contact-us" element={<Kontakt />} />
         <Route path="/workshops-us" element={<WorkshopsUS />} />
         <Route path="/event-highlights-us" element={<EventHighlightsUs />} />
 
