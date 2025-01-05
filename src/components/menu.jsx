@@ -106,7 +106,19 @@ const Menu = ({ itemId }) => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
 
+      if (response.status === 200) {
+        window.location.reload(); 
+        navigate('/');
+        
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   const startEditing = (id, name, description) => {
     setEditingId(id);
@@ -176,7 +188,12 @@ const Menu = ({ itemId }) => {
   {/* Konferencat */}
   <div className="text-lg font-semibold hover:bg-blue-500 hover:text-white px-4 py-2 rounded-lg transition duration-300">
     Konferencat
+    
   </div>
+
+  <button onClick={handleLogout} className="text-gray-700 hover:text-blue-500">
+              Logout
+            </button>
 
   {/* Shto Konferencen */}
 

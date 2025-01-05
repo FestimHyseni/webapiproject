@@ -19,7 +19,7 @@ const postRoutes = require('./routes/postRoutes');
 const { createItem, getItems, updateItem, deleteItem, getItemsWithParticipantsCount} = require('./controller/itemController');
 const { createSponsor, getSponsors, updateSponsor, deleteSponsor, getPjes } = require('./controller/sponsorController');
 const { createPost, getPosts , updatePost, deletePost } = require('./controller/postController');
-
+const { sendContactEmail } = require('./controller/nodeKontaktForm')
 
 const app = express()
 const db = require('./db');
@@ -51,11 +51,11 @@ app.use(flash());
 app.use(helmet());
 
 // Configure rate limiting for DDoS protection
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-});
-app.use(limiter);
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // Limit each IP to 100 requests per windowMs
+// });
+// app.use(limiter);
 
 // Configure body parser and CORS
 app.use(cors({
@@ -241,6 +241,7 @@ app.post('/logout', (req, res) => {
 //   }
 // });
 app.get('/with-participants', getItemsWithParticipantsCount);
+app.post('/contact', sendContactEmail);
 
 
 // CRUD routes for items
